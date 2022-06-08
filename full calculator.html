@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+#cont{
+    border: 1px solid black;
+    width: 450px;
+    height: 520px;
+    margin-top: 50px;
+    margin: auto;
+    border-bottom:2px solid black ;
+    border-top:2px solid black ;
+    border-left: 3px solid red;
+    border-right:3px solid red ;
+    border-bottom-left-radius:10px ;
+    border-top-left-radius: 20px;
+    border-top-right-radius:10px ;
+    border-bottom-right-radius:10px ;
+    background-color: rgb(250, 229, 108);
+    box-shadow: 3px 4px 3px 4px rgba(0, 0, 0, 0.74);
+}
+
+#screen{
+    margin-top: 10px;
+    width: 400px;
+    align-items: center;
+    height: 45px;
+    margin-left: 20px;
+    border: 3px solid black;
+    border-radius: 20px 40px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+#cont2{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+#btn1{
+    width:100px ;
+    height:35px ;
+    border:2px solid rgb(238, 51, 51) ;
+    border-radius:5px 10px ;
+    background-color:black ;
+    font-size: 22px;
+    color: white;
+    box-shadow: 2px 4px 1px black;
+}
+#btn1:hover{
+background-color: rgba(255, 255, 0, 0.719);
+color: black;
+/* transition: 0.6s; */
+transition: ease-in-out 0.5s;
+border: 2px solid red;
+font-weight: bold;
+}
+#h1{
+    text-align: center;
+    font-size:40px ;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    font-weight: ;
+    color:red ;
+    background-color: black;
+    border:2px solid yellow;
+}
+#h1:hover{
+    color: black;
+    background-color: yellow;
+    border: 2px solid red;
+    transition: ease-in 0.2s;
+    transition: ease-out 0.5s;
+}
+
+</style>
+<body style="background-color: rgb(173, 173, 173);">
+    <h1 id="h1">EMPEROR J </h1>
+    <div id="cont">    
+<input type="text" name="" id="screen" readonly placeholder="OUTPUT">
+<input type="text" id="screen2" contenteditable="true" style="display: none;">
+<div id="cont2">
+<button id="btn1" style="margin-left: 10px;" onclick="addNumber(7)">7</button>
+<button id="btn1" onclick="addNumber(8)">8</button>
+<button id="btn1" onclick="addNumber(9)">9</button>
+<button id="btn1" style="margin-right: 10px;" onclick="getOperator('+')">+</button>
+</div>
+<div id="cont2">
+    <button id="btn1" style="margin-left: 10px;" onclick="addNumber(4)">4</button>
+    <button id="btn1" onclick="addNumber(5)">5</button>
+    <button id="btn1" onclick="addNumber(6)">6</button>
+    <button id="btn1" style="margin-right: 10px;" onclick="getOperator('-')">-</button>
+    </div>
+    <div id="cont2">
+        <button id="btn1" style="margin-left: 10px;" onclick="addNumber(1)">1</button>
+        <button id="btn1" onclick="addNumber(2)">2</button>
+        <button id="btn1" onclick="addNumber(3)">3</button>
+        <button id="btn1" style="margin-right: 10px;" onclick="getOperator('*')">*</button>
+        </div>
+        <div id="cont2">
+            <button id="btn1" style="margin-left: 10px;" onclick="addNumber(0)">0</button>
+            <button id="btn1" onclick="clear()">C</button>
+            <button id="btn1" onclick="getOperator('%')">%</button>
+            <button id="btn1" style="margin-right: 10px;" onclick="getOperator('/')">/</button>
+            </div>
+            <div id="cont2">
+                <button id="btn1" style="margin-left: 10px;" onclick="getOperator('**')">x2</button>
+                <button id="btn1" onclick="on()">ON</button>
+                <button id="btn1" onclick="off()">OFF</button>
+                <button id="btn1" style="margin-right: 10px;" onclick="getOpeartor('✓')">✓</button>
+                </div>
+            <div id="cont2">
+                <button id="btn1" style="margin-left: 10px;" onclick="">GST+</button>
+                <button id="btn1" onclick="">GST-</button>
+                <button id="btn1" onclick="">RATE</button>
+                <button id="btn1" style="margin-right: 10px;font-size: 17px;" onclick="">GO BACK</button>
+                </div>
+                <div id="cont2">
+                    <button id="btn1" style="margin-left: 10px;" onclick="">AC</button>
+                    <button id="btn1" onclick="">SIN</button>
+                    <button id="btn1" onclick="">COS</button>
+                    <button id="btn1" style="margin-right: 10px;" onclick="">TAN</button>
+                    </div>
+                    <div id="cont2">
+                        <button id="btn1" style="width: 200px;margin-left: 10px;" onclick="equal()">=</button>
+                        <button id="btn1" onclick="del()">DEL</button>
+                        <button id="btn1" style="margin-right: 10px;font-size: 30px;text-align: top;"   value ="." onclick="addNumber('.')">.</button>
+                        </div>
+    </div>
+</body>
+</html>
+<script>
+    let first_number = 0;
+    let second_number = 0;
+    let operator = "";
+    // let on = true;
+    // let off = true;
+    // let screen = document.getElementById('screen')
+    // let screen2 = document.getElementById('screen2')
+
+    // screen2.hidden = true;
+    // screen.hidden = true;
+
+    // // function on() {
+    //     if (on === true) {
+    //         screen.innerHTML = null;
+    //         screen2.hidden = false;
+    //         screen.hidden = false;
+    //         console.log(on);
+    //         on = true;
+    //     } else {
+    //         screen2.hidden = true;
+    //         screen.hidden = true;
+    //         console.log(on);
+    //         off = true;
+    //     }
+         
+    // }
+    // function off() {
+    //     if (off === false) {
+    //         screen.innerHTML = null;
+    //         screen2.hidden = false;
+    //         screen.hidden = false;
+    //         console.log(off);
+    //         off = false;
+    //     } else {
+    //         screen2.hidden = true;
+    //         screen.hidden = true;
+    //         console.log(off);
+    //         on = true;
+    //     }}
+        function del(){
+        let screenValue = document.getElementById('screen');
+        let lengthOfString = String(screenValue.value).length;
+        let partOfString = String(screenValue.value).slice(0, lengthOfString - 1)
+        document.getElementById('screen').value = partOfString
+    }
+function addNumber(screenNumber) {
+    document.getElementById('screen').value += screenNumber
+}
+function getOperator(opt) {
+    operator = opt;
+    first_number = Number(document.getElementById('screen').value)
+    document.getElementById('screen').value = ""
+}
+function equal() {
+    second_number = Number(document.getElementById('screen').value)
+
+    
+    if(operator == "+"){
+            document.getElementById('screen').value = first_number + second_number;
+        }else if(operator == "-"){
+            document.getElementById('screen').value = first_number - second_number;
+        }else if(operator == "/"){
+            document.getElementById('screen').value = first_number / second_number;
+        }else if(operator == "*"){
+            document.getElementById('screen').value = first_number * second_number;
+        }else if(operator == "**"){
+            document.getElementById('screen').value = first_number * first_number;
+        }else if(operator == "✓"){
+            document.getElementById('screen').value = Math.sqrt(first_number);
+        }else if(operator == "%"){
+            document.getElementById('screen').value = (first_number / 100);
+        }else{
+            console.log("No operator selected");
+        }
+}
+// function del() {
+//     first_number--
+//     document.getElementById('screen').value = `${first_number}`
+// }
+function clear() {
+    document.getElementById('screen').value = 0
+}
+// function off(){
+//     document.getElementById('screen').style.backgroundColor = 'black'
+//     document.getElementById('screen').style.color = 'black'
+
+// }
+function clear(){
+        document.getElementById('screen').innerHTML = null
+        document.getElementById('screen2').innerHTML = null
+    }
+   
+</script>
