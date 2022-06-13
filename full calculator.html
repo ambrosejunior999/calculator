@@ -37,6 +37,18 @@
     font-weight: bold;
     text-align: center;
 }
+#screen2{
+    margin-top: 10px;
+    width: 400px;
+    align-items: center;
+    height: 45px;
+    margin-left: 20px;
+    border: 3px solid black;
+    border-radius: 20px 40px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center; 
+}
 #cont2{
     display: flex;
     margin-top: 20px;
@@ -80,9 +92,11 @@ font-weight: bold;
 </style>
 <body style="background-color: rgb(173, 173, 173);">
     <h1 id="h1">EMPEROR J </h1>
-    <div id="cont">    
+    <div id="cont">   
+        <div> 
 <input type="text" name="" id="screen" readonly placeholder="OUTPUT">
-<input type="text" id="screen2" contenteditable="true" style="display: none;">
+<input type="text" id="screen2" readonly style="display: none;">
+</div>
 <div id="cont2">
 <button id="btn1" style="margin-left: 10px;" onclick="addNumber(7)">7</button>
 <button id="btn1" onclick="addNumber(8)">8</button>
@@ -109,8 +123,8 @@ font-weight: bold;
             </div>
             <div id="cont2">
                 <button id="btn1" style="margin-left: 10px;" onclick="getOperator('**')">x2</button>
-                <button id="btn1" onclick="on()">ON</button>
-                <button id="btn1" onclick="off()">OFF</button>
+                <button id="btn1" onclick="ono()">ON</button>
+                <button id="btn1" onclick="offe()">OFF</button>
                 <button id="btn1" style="margin-right: 10px;" onclick="getOpeartor('✓')">✓</button>
                 </div>
             <div id="cont2">
@@ -137,42 +151,42 @@ font-weight: bold;
     let first_number = 0;
     let second_number = 0;
     let operator = "";
-    // let on = true;
-    // let off = true;
-    // let screen = document.getElementById('screen')
-    // let screen2 = document.getElementById('screen2')
+    let on = true;
+    let off = true;
+    let screen = document.getElementById('screen')
+    let screen2 = document.getElementById('screen2')
 
-    // screen2.hidden = true;
-    // screen.hidden = true;
+    screen2.hidden = true;
+    screen.hidden = true;
 
-    // // function on() {
-    //     if (on === true) {
-    //         screen.innerHTML = null;
-    //         screen2.hidden = false;
-    //         screen.hidden = false;
-    //         console.log(on);
-    //         on = true;
-    //     } else {
-    //         screen2.hidden = true;
-    //         screen.hidden = true;
-    //         console.log(on);
-    //         off = true;
-    //     }
+    function ono() {
+        if (on === true) {
+            screen.value = null;
+            screen2.hidden = false;
+            screen.hidden = false;
+            console.log(on);
+            on = true;
+        } else {
+            screen2.hidden = true;
+            screen.hidden = true;
+            console.log(on);
+            off = true;
+        }
          
-    // }
-    // function off() {
-    //     if (off === false) {
-    //         screen.innerHTML = null;
-    //         screen2.hidden = false;
-    //         screen.hidden = false;
-    //         console.log(off);
-    //         off = false;
-    //     } else {
-    //         screen2.hidden = true;
-    //         screen.hidden = true;
-    //         console.log(off);
-    //         on = true;
-    //     }}
+    }
+    function offe() {
+        if (off === false) {
+            screen.value = null;
+            screen2.hidden = false;
+            screen.hidden = false;
+            console.log(off);
+            off = false;
+        } else {
+            screen2.hidden = true;
+            screen.hidden = true;
+            console.log(off);
+            on = true;
+        }}
         function del(){
         let screenValue = document.getElementById('screen');
         let lengthOfString = String(screenValue.value).length;
@@ -209,18 +223,10 @@ function equal() {
             console.log("No operator selected");
         }
 }
-// function del() {
-//     first_number--
-//     document.getElementById('screen').value = `${first_number}`
-// }
 function clear() {
     document.getElementById('screen').value = 0
 }
-// function off(){
-//     document.getElementById('screen').style.backgroundColor = 'black'
-//     document.getElementById('screen').style.color = 'black'
 
-// }
 function clear(){
         document.getElementById('screen').innerHTML = null
         document.getElementById('screen2').innerHTML = null
